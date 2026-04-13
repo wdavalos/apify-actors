@@ -1,0 +1,21 @@
+{
+  "actorSpecificationVersion": "1.0.0",
+  "name": "wirecutter-product-reviews",
+  "version": "1.0.0",
+  "title": "Wirecutter Product Reviews API",
+  "description": "Extract structured product review data from Wirecutter. Returns clean JSON with product name, category, rating, price, pros, cons, verdict, author, and last-updated date.",
+  "owner": "",
+  "hasAnonymousAccess": true,
+  "readme": "# Wirecutter Product Reviews API\n\nExtract structured product review data from Wirecutter (NYT's product review site).\n\n## Quick Start\n\n```bash\nnpm install\napify run\n```\n\n## Input\n\n```json\n{\n  \"mode\": \"single\",\n  \"url\": \"https://nytimes.com/wirecutter/reviews/sony-wh-1000xm5/\"\n}\n```\n\n## Output\n\n```json\n{\n  \"id\": \"uuid\",\n  \"sourceUrl\": \"https://nytimes.com/wirecutter/reviews/sony-wh-1000xm5/\",\n  \"scrapedAt\": \"2026-04-13T12:00:00.000Z\",\n  \"product\": {\n    \"name\": \"Sony WH-1000XM5\",\n    \"category\": \"Over-ear headphones\",\n    \"subcategory\": \"Noise-canceling headphones\"\n  },\n  \"review\": {\n    \"rating\": 4.5,\n    \"price\": 349.99,\n    \"pros\": [\"Excellent noise cancellation\", \"30-hour battery\"],\n    \"cons\": [\"Expensive\", \"No aptX support\"],\n    \"verdict\": \"The best noise-canceling headphones you can buy\",\n    \"author\": \"Mark Sparrow\",\n    \"publishedDate\": \"2022-10-15\",\n    \"lastUpdated\": \"2026-03-01\"\n  }\n}\n```\n\n## Modes\n\n- `single`: Scrape a single review URL\n- `category`: Scrape all reviews in a category\n- `full`: Scrape all reviews across all categories\n\n## Pricing\n\n- Single review: $0.05\n- Category scrape: $0.50\n- Full catalog: $2.00\n\n## MCP\n\nAI agents can call this actor via MCP:\n\n```json\n{\n  \"mcpServers\": {\n    \"wirecutter-reviews\": {\n      \"command\": \"npx\",\n      \"args\": [\"@apify/mcp-server-wirecutter\"],\n      \"url\": \"https://YOUR-USERNAME--wirecutter-product-reviews.apify.actor/mcp\"\n    }\n  }\n}\n```\n",
+  "categories": ["data-extraction", "e-commerce"],
+  "inputSchema": "INPUT_SCHEMA.js",
+  "groups": [],
+  "maxPaidEventsDoneRatio": 0.1,
+  "maxTotalUnitCost": 5,
+  "pricingInfo": {
+    "default": {
+      "runs": 10,
+      "datasetResults": 100
+    }
+  }
+}
